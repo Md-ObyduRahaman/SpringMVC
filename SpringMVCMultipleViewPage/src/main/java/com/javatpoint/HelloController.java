@@ -38,6 +38,15 @@ public class HelloController {
 		modelAndView.addObject("rollnumber", 11294);
 		LocalDateTime time = LocalDateTime.now();
 		modelAndView.addObject("time", time);
+		// Marks
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(12);
+		list.add(13);
+		list.add(14);
+		list.add(15);
+
+		modelAndView.addObject("marks", list);
+
 		// setting the view name
 		modelAndView.setViewName("help");
 		return modelAndView;
