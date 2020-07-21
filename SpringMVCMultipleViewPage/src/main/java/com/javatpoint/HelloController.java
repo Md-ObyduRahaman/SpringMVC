@@ -1,11 +1,13 @@
 package com.javatpoint;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloController {
@@ -26,5 +28,18 @@ public class HelloController {
 	@RequestMapping("/about")
 	public String about() {
 		return "about";
+	}
+
+	@RequestMapping("/help")
+	public ModelAndView help() {
+		ModelAndView modelAndView = new ModelAndView();
+		// setting the data
+		modelAndView.addObject("name", "Sojib");
+		modelAndView.addObject("rollnumber", 11294);
+		LocalDateTime time = LocalDateTime.now();
+		modelAndView.addObject("time", time);
+		// setting the view name
+		modelAndView.setViewName("help");
+		return modelAndView;
 	}
 }
