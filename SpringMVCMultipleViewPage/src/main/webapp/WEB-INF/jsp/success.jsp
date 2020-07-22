@@ -7,9 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Welcome, ${userName }</h1>
-<h1>your email address is, ${name }</h1>
-<h1>Your password is, ${userPassword }</h1>
+<h1>${Header}</h1>
+<p>${Desc }</p>
+<hr>
+
+<%-- all field from model thats why field name must same with model variable --%> 
+<h1>Welcome, ${user.userName}</h1>
+<h1>your email address is, ${user.email }</h1>
+<h1>Your password is, ${user.userPassword }</h1>
 
 </body>
 </html>
