@@ -1,5 +1,6 @@
 package com.javatpoint;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javatpoint.model.User;
+import com.javatpoint.service.UserService;
 
 @Controller
 public class ContactController {
+
+	@Autowired
+	private UserService userService;
 
 	@ModelAttribute
 	public void commonDataForModel(Model model) {
@@ -40,7 +45,13 @@ public class ContactController {
 		 * addAttribute("Header", "Sojib code"); model.addAttribute("Desc",
 		 * "Home for programmer");
 		 */
-		System.out.println(user);
+		if (user.getUserName().isEmpty()) {
+			return "redirect:/contact";
+
+		}
+		int creatUser = this.userService.creatUser(user);
+		model.addAttribute("msg", "User created with id " + creatUser);
+
 		// process
 		return "success";
 	}
